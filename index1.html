@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ohm's Law Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .container {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 15px;
+            width: 320px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #38bdf8;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0ea5e9;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .formula {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Ohm's Law</h1>
+    <div class="formula">V = I × R</div>
+
+    <input type="number" id="voltage" placeholder="Voltage (V)">
+    <input type="number" id="current" placeholder="Current (A)">
+    <input type="number" id="resistance" placeholder="Resistance (Ω)">
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function calculate() {
+    let V = parseFloat(document.getElementById("voltage").value);
+    let I = parseFloat(document.getElementById("current").value);
+    let R = parseFloat(document.getElementById("resistance").value);
+
+    let result = "";
+
+    if (!isNaN(I) && !isNaN(R) && isNaN(V)) {
+        V = I * R;
+        result = "Voltage (V) = " + V.toFixed(2) + " V";
+    }
+    else if (!isNaN(V) && !isNaN(R) && isNaN(I)) {
+        I = V / R;
+        result = "Current (I) = " + I.toFixed(2) + " A";
+    }
+    else if (!isNaN(V) && !isNaN(I) && isNaN(R)) {
+        R = V / I;
+        result = "Resistance (R) = " + R.toFixed(2) + " Ω";
+    }
+    else {
+        result = "Enter any TWO values only!";
+    }
+
+    document.getElementById("result").innerHTML = result;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Electronics Calculator</h1>
+
+<!-- Navigation -->
+<div class="nav">
+    <button onclick="showCalc('ohm')">Ohm's Law</button>
+    <button onclick="showCalc('power')">Power</button>
+    <button onclick="showCalc('divider')">Voltage Divider</button>
+</div>
+
+<!-- OHM -->
+<div id="ohm" class="card">
+    <h2>Ohm's Law</h2>
+    <p>V = I × R</p>
+
+    <input id="v" placeholder="Voltage (V)">
+    <input id="i" placeholder="Current (A)">
+    <input id="r" placeholder="Resistance (Ω)">
+
+    <button onclick="calcOhm()">Calculate</button>
+    <div id="ohmResult"></div>
+    <div class="tip-box">
+        <strong>💡 Tip:</strong>
+        For milliamps (mA), divide by 1000. Example: 20mA = 0.02A<br>
+        For kilohms (kΩ), multiply by 1000. Example: 4.7kΩ = 4700Ω
+    </div>
+</div>
+
+<!-- POWER -->
+<div id="power" class="card hidden">
+    <h2>Power Calculator</h2>
+    <p>P = V × I</p>
+
+    <input id="pv" placeholder="Voltage (V)">
+    <input id="pi" placeholder="Current (A)">
+
+    <button onclick="calcPower()">Calculate</button>
+    <div id="powerResult"></div>
+</div>
+
+<!-- VOLTAGE DIVIDER -->
+    <div id="divider" class="card hidden">
+        <h2>Voltage Divider</h2>
+        <p>Vout = Vin × (R2 / (R1 + R2))</p>
+        <input id="vin" placeholder="Input Voltage">
+        <input id="r1" placeholder="R1">
+        <input id="r2" placeholder="R2">
+        <button onclick="calcDivider()">Calculate</button>
+        <div id="divResult"></div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
